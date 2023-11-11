@@ -8,11 +8,12 @@
     <title>Home | Hotellin</title>
 
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+
 </head>
+
 <style>
     body {
         background-color: #fff;
-        /* Warna biru */
     }
 
     #carouselExampleCaptions {
@@ -35,7 +36,6 @@
         object-fit: cover;
     }
 
-    /* Tambahkan margin pada navbar */
     .navbar {
         margin-bottom: 20px;
     }
@@ -46,7 +46,7 @@
 </style>
 
 <body>
-    <div class="container-fluid ">
+    <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
             <div class="container">
                 <a class="navbar-brand" href="tamu.php">HOTELLIN</a>
@@ -74,9 +74,8 @@
             </div>
         </nav>
     </div>
-    <div class="container">
 
-        <!-- Carousel -->
+    <div class="container">
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
@@ -107,49 +106,71 @@
                 <span class="visually-hidden">Next</span>
             </button>
         </div>
-        <!-- Card for input form -->
-        <div class="card mt-4">
-            <div class="card-body">
-                <h5 class="card-title">Reservation Details</h5>
-                <form class="row g-3">
-                    <div class="col-md-4">
-                        <label for="checkinDate" class="form-label">Check-in Date</label>
-                        <input type="date" class="form-control" id="checkinDate" required>
-                    </div>
-                    <div class="col-md-4">
-                        <label for="checkoutDate" class="form-label">Check-out Date</label>
-                        <input type="date" class="form-control" id="checkoutDate" required>
-                    </div>
-                    <div class="col-md-2">
-                        <label for="roomCount" class="form-label">Number of Rooms</label>
-                        <input type="number" class="form-control" id="roomCount" required>
-                    </div>
-                    <div class="col-md-2 d-flex align-items-end ms-auto me-auto">
-                        <button type="button" class="btn btn-primary" onclick="saveBooking()">Simpan</button>
-                    </div>
-                </form>
+
+        <div class="mt-5">
+            <div class="card">
+                <div class="card-body">
+                    <h5 class="card-title">Reservation Details</h5>
+                    <form class="row g-3" action="simpan_booking.php" method="post">
+                        <div class="col-md-6">
+                            <label for="bookerName" class="form-label">Name of Booker</label>
+                            <input type="text" class="form-control" id="bookerName" name="bookerName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="bookerEmail" class="form-label">Email</label>
+                            <input type="email" class="form-control" id="bookerEmail" name="bookerEmail" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="bookerPhone" class="form-label">Phone Number</label>
+                            <input type="tel" class="form-control" id="bookerPhone" name="bookerPhone" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="guestName" class="form-label">Guest Name</label>
+                            <input type="text" class="form-control" id="guestName" name="guestName" required>
+                        </div>
+                        <div class="col-md-6">
+                            <label for="roomType" class="form-label">Room Type</label>
+                            <select class="form-select" id="roomType" name="roomType" required>
+                                <option value="" disabled selected>Select Room Type</option>
+                                <option value="standard">Standard Room</option>
+                                <option value="deluxe">Deluxe Room</option>
+                                <option value="suite">Suite Room</option>
+                            </select>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="checkinDate" class="form-label">Check-in Date</label>
+                            <input type="date" class="form-control" id="checkinDate" name="checkinDate" required>
+                        </div>
+                        <div class="col-md-3">
+                            <label for="checkoutDate" class="form-label">Check-out Date</label>
+                            <input type="date" class="form-control" id="checkoutDate" name="checkoutDate" required>
+                        </div>
+                        <div class="col-md-2">
+                            <label for="roomCount" class="form-label">Jumlah Kamar</label>
+                            <input type="number" class="form-control mb-2" id="roomCount" name="roomCount" required>
+                            <div class="col-md-12 d-flex align-items-end">
+                                <button type="submit" class="btn btn-primary mt-2" id="" name="saveBooking">Simpan</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
             </div>
         </div>
 
-        <script>
-            // Function to save booking data
-            function saveBooking() {
-                var checkinDate = document.getElementById('checkinDate').value;
-                var checkoutDate = document.getElementById('checkoutDate').value;
-                var roomCount = document.getElementById('roomCount').value;
-
-                // Do something with the saved data, e.g., send it to the server or display a message
-                alert('Booking saved!\nCheck-in Date: ' + checkinDate + '\nCheck-out Date: ' + checkoutDate + '\nNumber of Rooms: ' + roomCount);
-            }
-        </script>
-
-
-
-
-
-
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <div class="mt-5 text-center">
+            <h5 class="card-title">About Hotel</h5>
+            <p>
+                Welcome to Hotellin! Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+                Welcome to Hotellin! Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                Sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam,
+                quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat.
+            </p>
+        </div>
     </div>
+
+    <script src="assets/js/bootstrap.bundle.min.js"></script>
 </body>
 
 </html>
