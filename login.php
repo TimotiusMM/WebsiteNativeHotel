@@ -23,7 +23,7 @@
                 }
             }
             ?>
-            <p class="tulisan_login">Selamat Datang</p>
+            <p class="tulisan_login">FORM LOGIN</p>
 
             <form action="cek_login.php" method="post">
                 <div class="input-group">
