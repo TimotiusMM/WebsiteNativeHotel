@@ -1,0 +1,80 @@
+/* Your existing styles here */
+body {
+  background: linear-gradient(45deg, #739749, #bdc54e, #739749);
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+}
+
+.kotak_login {
+  width: 400px;
+  padding: 40px;
+  background-color: rgba(251, 252, 220, 0.9);
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.tulisan_login {
+  font-size: 24px;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 20px;
+  color: #c4ce31;
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.form_login {
+  width: 100%;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #ced4da;
+  border-radius: 8px;
+  padding-left: 10px; /* Change as needed */
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.tombol_login {
+  width: 100%;
+  padding: 10px;
+  background-color: #c4ce31;
+  color: #fff;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.tombol_login:hover {
+  background-color: #739749;
+}
+
+.alert {
+  background-color: #fff4e0;
+  color: #721c24;
+  padding: 10px;
+  margin-bottom: 20px;
+  border: 1px solid #f5c6cb;
+  border-radius: 5px;
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.register-link {
+  text-align: center;
+  margin-top: 10px;
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.register-link a {
+  color: #ffa07a;
+  text-decoration: none;
+  font-family: "Arial", sans-serif; /* Change to your desired font */
+}
+
+.register-link a:hover {
+  text-decoration: underline;
+}

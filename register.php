@@ -62,11 +62,15 @@ $koneksi->close();
             justify-content: center;
             align-items: center;
             height: 100vh;
+            background-color: #f8f9fa;
         }
 
         .card {
             max-width: 400px;
             padding: 20px;
+            border: 1px solid #ccc;
+            border-radius: 8px;
+            background-color: #fff;
         }
 
         .card-title {
@@ -81,16 +85,40 @@ $koneksi->close();
             margin-top: 10px;
         }
 
+        .success-message {
+            color: green;
+            font-size: 14px;
+            margin-top: 10px;
+        }
+
         .form-label {
             font-weight: bold;
+            margin-bottom: 5px;
+            display: block;
         }
 
         .form-group {
             margin-bottom: 20px;
         }
 
+        .form-control {
+            width: 100%;
+            padding: 8px;
+            box-sizing: border-box;
+        }
+
         .btn-register {
             width: 100%;
+            padding: 10px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+        }
+
+        .btn-register:hover {
+            background-color: #0056b3;
         }
     </style>
 </head>
@@ -102,7 +130,7 @@ $koneksi->close();
             <div class="error-message"><?php echo $error; ?></div>
         <?php } ?>
         <?php if (!empty($message)) { ?>
-            <div class="alert alert-success"><?php echo $message; ?></div>
+            <div class="success-message"><?php echo $message; ?></div>
         <?php } ?>
         <form method="POST" action="pasien.php">
             <div class="form-group">
