@@ -14,6 +14,7 @@
 <style>
     body {
         background-color: #fff;
+        padding-top: 56px;
     }
 
     #carouselExampleCaptions {
@@ -43,11 +44,19 @@
     .container-fluid {
         padding: 0;
     }
+
+    .sticky-top {
+        position: fixed;
+        top: 0;
+        width: 100%;
+        z-index: 1000;
+        transition: top 0.5s;
+    }
 </style>
 
 <body>
     <div class="container-fluid">
-        <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+        <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="tamu.php">HOTELLIN</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -75,7 +84,7 @@
         </nav>
     </div>
 
-    <div class="container">
+    <div class="container mt-4">
         <div id="carouselExampleCaptions" class="carousel slide">
             <div class="carousel-indicators">
                 <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
