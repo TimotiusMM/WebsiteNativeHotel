@@ -16,25 +16,6 @@
         /* Set padding-top to accommodate the fixed navbar */
     }
 
-    #carouselExampleCaptions {
-        max-width: 100%;
-        margin: auto;
-        height: 300px;
-    }
-
-    .carousel-inner {
-        max-width: 100%;
-        max-height: 100%;
-        text-align: center;
-    }
-
-    .carousel-item img {
-        width: 100%;
-        max-width: 100%;
-        max-height: 100%;
-        height: auto;
-        object-fit: cover;
-    }
 
     .navbar {
         margin-bottom: 20px;
