@@ -126,23 +126,27 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     </thead>
                     <tbody>
                         <?php
-                        // Fetch and display room data from the database
                         $result = $koneksi->query("SELECT * FROM kamar");
-                        if ($result->num_rows > 0) {
-                            $counter = 1;
-                            while ($row = $result->fetch_assoc()) {
-                                echo '<tr>
-                                    <td>' . $counter++ . '</td>
-                                    <td>' . $row['tipe_kamar'] . '</td>
-                                    <td>' . $row['jumlah_kamar'] . '</td>
-                                    <td>
-                                        <button class="btn btn-warning">Edit</button>
-                                        <button class="btn btn-danger">Delete</button>
-                                    </td>
-                                </tr>';
-                            }
+
+                        if (!$result) {
+                            echo "Error: " . $koneksi->error;
                         } else {
-                            echo '<tr><td colspan="4">No records found</td></tr>';
+                            if ($result->num_rows > 0) {
+                                $counter = 1;
+                                while ($row = $result->fetch_assoc()) {
+                                    echo '<tr>
+                <td>' . $counter++ . '</td>
+                <td>' . $row['tipe_kamar'] . '</td>
+                <td>' . $row['jumlah_kamar'] . '</td>
+                <td>
+                    <a href="editDataKamar.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
+                    <button class="btn btn-danger">Delete</button>
+                </td>
+            </tr>';
+                                }
+                            } else {
+                                echo '<tr><td colspan="4">No records found</td></tr>';
+                            }
                         }
                         ?>
                     </tbody>
