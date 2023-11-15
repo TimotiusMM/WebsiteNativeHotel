@@ -47,29 +47,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 $koneksi->close();
 ?>
 
-<!-- Add the following form to editDataKamar.php to allow users to modify room details -->
-<form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
-    <input type="hidden" name="roomNo" value="<?php echo $roomNo; ?>">
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Room - HOTELLIN</title>
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+
+    <!-- Your existing stylesheets -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="desain.css"> <!-- Link to your external CSS file -->
+</head>
+
+<body>
     <div class="container">
         <div class="card mt-3 mb-4">
             <div class="card-body">
                 <h2 class="card-title mt-2">Edit Room</h2>
-                <div class="row g-3 mt-2">
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="roomType" class="form-label">Room Type</label>
-                            <input type="text" class="form-control" name="roomType" id="roomType" value="<?php echo $roomType; ?>" required>
+                <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+                    <input type="hidden" name="roomNo" value="<?php echo $roomNo; ?>">
+                    <div class="row g-3 mt-2">
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="roomType" class="form-label">Room Type</label>
+                                <input type="text" class="form-control" name="roomType" id="roomType" value="<?php echo $roomType; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-6">
+                            <div class="mb-3">
+                                <label for="roomCount" class="form-label">Room Count</label>
+                                <input type="number" class="form-control" name="roomCount" id="roomCount" value="<?php echo $roomCount; ?>" required>
+                            </div>
+                        </div>
+                        <div class="col-md-12">
+                            <button type="submit" class="btn btn-primary" aria-label="Submit Form">Update</button>
                         </div>
                     </div>
-                    <div class="col-md-6">
-                        <div class="mb-3">
-                            <label for="roomCount" class="form-label">Room Count</label>
-                            <input type="number" class="form-control" name="roomCount" id="roomCount" value="<?php echo $roomCount; ?>" required>
-                        </div>
-                    </div>
-                    <button type="submit" class="btn btn-primary" aria-label="Submit Form">Update</button>
-                </div>
+                </form>
             </div>
         </div>
     </div>
-</form>
+
+    <!-- Bootstrap JS and dependencies -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
+</body>
+
+</html>

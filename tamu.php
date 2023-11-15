@@ -6,9 +6,9 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Home | Hotellin</title>
-
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
 
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
 </head>
 
 <style>
@@ -59,7 +59,7 @@
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container">
                 <a class="navbar-brand" href="tamu.php">HOTELLIN</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
@@ -85,13 +85,7 @@
     </div>
 
     <div class="container mt-4">
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-                <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3" aria-label="Slide 4"></button>
-            </div>
+        <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
                     <img src="assets/img/suite-room.jpeg" class="d-block w-100" alt="Image 1" style="object-fit: cover;">
@@ -106,14 +100,14 @@
                     <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="d-block w-100" alt="Image 4" style="object-fit: cover;">
                 </div>
             </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
+            <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
+                <span class="sr-only">Previous</span>
+            </a>
+            <a class="carousel-control-next" href="#carouselExampleCaptions" role="button" data-slide="next">
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
-                <span class="visually-hidden">Next</span>
-            </button>
+                <span class="sr-only">Next</span>
+            </a>
         </div>
 
         <div class="mt-5">
@@ -137,7 +131,7 @@
                             <label for="guestName" class="form-label">Guest Name</label>
                             <input type="text" class="form-control" id="guestName" name="guestName" required>
                         </div>
-                        <div class="col-md-6">
+                        <div class="col-md-6 mt-4">
                             <label for="roomType" class="form-label">Room Type</label>
                             <select class="form-select" id="roomType" name="roomType" required>
                                 <option value="" disabled selected>Select Room Type</option>
@@ -157,10 +151,9 @@
                         <div class="col-md-2">
                             <label for="roomCount" class="form-label">Jumlah Kamar</label>
                             <input type="number" class="form-control mb-2" id="roomCount" name="roomCount" required>
-                            <div class="col-md-12 d-flex align-items-end">
+                            <div class="d-flex w-100">
                                 <button type="submit" class="btn btn-primary mt-2" id="" name="saveBooking">Simpan</button>
                             </div>
-                        </div>
                     </form>
                 </div>
             </div>
@@ -180,6 +173,9 @@
     </div>
 
     <script src="assets/js/bootstrap.bundle.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

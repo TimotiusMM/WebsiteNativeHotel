@@ -30,9 +30,11 @@
                     <input type="text" name="username" class="form_login" placeholder="Username" required="required">
                 </div>
 
-                <div class="input-group">
+                <div class="input-group mb-2">
                     <input type="password" name="password" class="form_login" id="password" placeholder="Password" required="required">
+                    <input type="checkbox" id="showPassword"> Show Password
                 </div>
+
 
                 <input type="submit" class="tombol_login" value="LOGIN">
             </form>
@@ -54,7 +56,12 @@
             }
         });
     </script>
-
+    <script>
+        document.getElementById('showPassword').addEventListener('change', function() {
+            const passwordInput = document.getElementById('password');
+            passwordInput.type = this.checked ? 'text' : 'password';
+        });
+    </script>
 </body>
 
 </html>
