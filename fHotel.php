@@ -11,23 +11,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         $roomFasilitas = mysqli_real_escape_string($koneksi, $_POST['roomFasilitas']);
         $roomKeterangan = mysqli_real_escape_string($koneksi, $_POST['roomKeterangan']);
 
-        // Insert data into the database
-        $sql = "INSERT INTO fhotel (fasilitas, keterangan) VALUES ('$roomFasilitas', '$roomKeterangan')";
+        // File upload handling
+        $targetDir = "C:/xampp1/htdocs/webHotel/assets/img/";
+        $uploadOk = 1;
+        $imageFileType = strtolower(pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION));
 
-        if ($koneksi->query($sql) === TRUE) {
-            // Set success message in session
-            session_start();
-            $_SESSION['success_message'] = "Data Berhasil Disimpan";
+        // Setel nama file unik dengan menggunakan uniqid() dan tambahkan ekstensi file
+        $targetFile = $targetDir . uniqid() . '.' . $imageFileType;
 
-            // Redirect to the same page to avoid form resubmission
-            header('Location: ' . $_SERVER['PHP_SELF']);
-            exit();
+        // Check if file size is too large
+        if ($_FILES["gambar"]["size"] > 500000) {
+            echo '<script>alert("Sorry, your file is too large.");</script>';
+            $uploadOk = 0;
+        }
+
+        // Allow certain file formats
+        $allowedExtensions = array("jpg", "jpeg", "png", "gif");
+        if (!in_array($imageFileType, $allowedExtensions)) {
+            echo '<script>alert("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");</script>';
+            $uploadOk = 0;
+        }
+
+        // Check if $uploadOk is set to 0 by an error
+        if ($uploadOk == 0) {
+            echo '<script>alert("Sorry, your file was not uploaded.");</script>';
         } else {
-            echo '<script>alert("Error: ' . $sql . '<br>' . $koneksi->error . '");</script>';
+            if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFile)) {
+                // Insert data into the database
+                $sql = "INSERT INTO fhotel (fasilitas, keterangan, gambar) VALUES ('$roomFasilitas', '$roomKeterangan', '$targetFile')";
+
+                if ($koneksi->query($sql) === TRUE) {
+                    // Set success message in session
+                    session_start();
+                    $_SESSION['success_message'] = "Data Berhasil Disimpan";
+
+                    // Redirect to the same page to avoid form resubmission
+                    header('Location: ' . $_SERVER['PHP_SELF']);
+                    exit();
+                } else {
+                    echo '<script>alert("Error: ' . $sql . '<br>' . $koneksi->error . '");</script>';
+                }
+            } else {
+                echo '<script>alert("Sorry, there was an error uploading your file.");</script>';
+            }
         }
     }
 }
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -122,8 +153,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     <thead>
                         <tr>
                             <th>No</th>
-                            <th>Tipe Kamar</th>
+                            <th>Fasilitas</th>
                             <th>keterangan</th>
+                            <th>Gambar</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -138,17 +170,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $counter = 1;
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<tr>
-    <td>' . $counter++ . '</td>
-    <td>' . $row['fasilitas'] . '</td>
-    <td>' . $row['keterangan'] . '</td>
-    <td>
-        <a href="editFhotel.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
-        <button class="btn btn-danger" onclick="prepareDelete(' . $row['no'] . ')">Delete</button>
-    </td>
-</tr>';
+        <td>' . $counter++ . '</td>
+        <td>' . $row['fasilitas'] . '</td>
+        <td>' . $row['keterangan'] . '</td>
+        <td>
+        <img src="' . $row['gambar'] . '" alt="Room Image" style="max-width: 100px; max-height: 100px;">
+        </td>
+
+        <td>
+            <a href="editFhotel.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
+            <button class="btn btn-danger" onclick="prepareDelete(' . $row['no'] . ')">Delete</button>
+        </td>
+    </tr>';
                                 }
                             } else {
-                                echo '<tr><td colspan="4">No records found</td></tr>';
+                                echo '<tr><td colspan="5">No records found</td></tr>';
                             }
                         }
                         ?>
@@ -177,7 +213,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <!-- Formulir untuk menambahkan data kamar (sembunyikan awalnya) -->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
             <div class="container">
                 <div id="roomForm" style="display: none;" class="mt-3">
                     <div class="card mt-3 mb-4">
@@ -186,25 +222,36 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                             <div class="row g-3 mt-2">
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="roomFasilitas" class="form-label">Tipe Kamar</label>
+                                        <label for="roomFasilitas" class="form-label">Fasilitas</label>
                                         <input type="text" class="form-control" name="roomFasilitas" id="roomFasilitas" required>
                                     </div>
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="roomKeterangan" class="form-label">Tipe Kamar</label>
+                                        <label for="roomKeterangan" class="form-label">Keterangan</label>
                                         <input type="text" class="form-control" name="roomKeterangan" id="roomKeterangan" required>
                                     </div>
                                 </div>
+                                <!-- Correct the name attribute to "gambar" -->
+                                <div class="col-md-6">
+                                    <div class="mb-3">
+                                        <label for="gambar" class="form-label">Room Image</label>
+                                        <input type="file" class="form-control" name="gambar" id="gambar">
+                                    </div>
+                                </div>
+
                                 <button type="submit" class="btn btn-primary" aria-label="Submit Form">Submit</button>
                             </div>
+
                         </div>
                     </div>
                 </div>
             </div>
         </form>
 
-        <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 
         <script>
             function showRoomForm() {
@@ -228,9 +275,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 $('#deleteModal').modal('show');
             }
         </script>
-        <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
-        <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.9.2/dist/umd/popper.min.js"></script>
-        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/js/bootstrap.min.js"></script>
 </body>
 
 </html>
