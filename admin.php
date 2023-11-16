@@ -138,14 +138,14 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $counter = 1;
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<tr>
-                <td>' . $counter++ . '</td>
-                <td>' . $row['tipe_kamar'] . '</td>
-                <td>' . $row['jumlah_kamar'] . '</td>
-                <td>
-                    <a href="editDataKamar.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
-                    <button class="btn btn-danger">Delete</button>
-                </td>
-            </tr>';
+    <td>' . $counter++ . '</td>
+    <td>' . $row['tipe_kamar'] . '</td>
+    <td>' . $row['jumlah_kamar'] . '</td>
+    <td>
+        <a href="editDataKamar.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
+        <button class="btn btn-danger" onclick="prepareDelete(' . $row['no'] . ')">Delete</button>
+    </td>
+</tr>';
                                 }
                             } else {
                                 echo '<tr><td colspan="4">No records found</td></tr>';
@@ -156,7 +156,26 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 </table>
             </div>
         </div>
-
+        <!-- Add a modal for confirmation -->
+        <div class="modal fade" id="deleteModal" tabindex="-1" aria-labelledby="deleteModalLabel" aria-hidden="true">
+            <div class="modal-dialog">
+                <div class="modal-content">
+                    <div class="modal-header">
+                        <h5 class="modal-title" id="deleteModalLabel">Delete Confirmation</h5>
+                        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                            <span aria-hidden="true">&times;</span>
+                        </button>
+                    </div>
+                    <div class="modal-body">
+                        Are you sure you want to delete this room?
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Cancel</button>
+                        <a href="#" id="confirmDelete" class="btn btn-danger">Delete</a>
+                    </div>
+                </div>
+            </div>
+        </div>
         <!-- Formulir untuk menambahkan data kamar (sembunyikan awalnya) -->
         <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="container">
@@ -186,6 +205,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         </form>
 
         <script src="assets/js/bootstrap.bundle.min.js"></script>
+
         <script>
             function showRoomForm() {
                 // Tampilkan formulir ketika tombol diklik
@@ -197,6 +217,15 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                     behavior: 'smooth',
                     block: 'start',
                 });
+            }
+
+            // Function to set the room id for deletion and show the modal
+            function prepareDelete(id) {
+                // Set the href of the confirmation button in the modal
+                document.getElementById("confirmDelete").href = "deleteDataKamar.php?no=" + id;
+
+                // Show the delete confirmation modal
+                $('#deleteModal').modal('show');
             }
         </script>
         <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"></script>
