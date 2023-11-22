@@ -86,13 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="admin.php">Room</a>
+                            <a class="nav-link active" href="admin.php">Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="fKamar" href="fKamar.php">Room Facilities</a>
+                            <a class="nav-link" aria-current="fKamar" href="fKamar.php">Fasilitas Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="fHotel.php">Hotel Facilities</a>
+                            <a class="nav-link active" href="fHotel.php">Fasilitas Hotel</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
 
-            <h2 class="mt-4">Room Facilities List</h2>
+            <h2 class="mt-4">Data Fasilitas Kamar</h2>
             <button class="btn btn-primary mt-2 mb-4" onclick="showRoomForm()">input</button>
 
             <div class="col-md-12">
@@ -192,7 +192,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 </div>
                                 <div class="col-md-6">
                                     <div class="mb-3">
-                                        <label for="roomFasilitas" class="form-label">Tipe Kamar</label>
+                                        <label for="roomFasilitas" class="form-label">Fasilitas</label>
                                         <input type="text" class="form-control" name="roomFasilitas" id="roomFasilitas" required>
                                     </div>
                                 </div>

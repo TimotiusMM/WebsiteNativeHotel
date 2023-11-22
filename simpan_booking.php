@@ -32,6 +32,10 @@ if (isset($_POST['saveBooking'])) {
         // Mendapatkan nomor pemesanan yang baru saja dibuat
         $bookingNumber = $conn->insert_id;
         echo "Reservation successful. Your booking data is saved.";
+        // Redirect to tamu.php after successful reservation
+        header("Location: tamu.php");
+        exit(); // Pastikan tidak ada kode ekstra yang dijalankan setelah pengalihan
+
     } else {
         echo "Error: " . $sql . "<br>" . $conn->error;
     }

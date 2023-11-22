@@ -39,9 +39,9 @@
                 <input type="submit" class="tombol_login" value="LOGIN">
             </form>
 
-            <div class="register-link">
+            <!-- <div class="register-link">
                 Belum punya akun? <a href="register.php">Daftar disini</a>
-            </div>
+            </div> -->
 
         </div>
     </div>

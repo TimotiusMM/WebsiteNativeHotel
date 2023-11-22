@@ -15,7 +15,11 @@ if ($_SERVER["REQUEST_METHOD"] == "GET" && isset($_GET['no'])) {
     if ($koneksi->query($sql_fkamar) !== TRUE) {
         echo '<script>alert("Error: ' . $sql_fkamar . '<br>' . $koneksi->error . '");</script>';
     }
-
+    // Perform the deletion for table 'fkamar'
+    $sql_fkamar = "DELETE FROM fhotel WHERE no = '$no'";
+    if ($koneksi->query($sql_fkamar) !== TRUE) {
+        echo '<script>alert("Error: ' . $sql_fkamar . '<br>' . $koneksi->error . '");</script>';
+    }
     // Set success message in session
     session_start();
     $_SESSION['success_message'] = "Data Berhasil Dihapus";

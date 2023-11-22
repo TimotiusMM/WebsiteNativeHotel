@@ -7,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Room | Hotellin</title>
     <link rel="stylesheet" href="assets/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
+
 </head>
 
 <style>
@@ -79,29 +81,39 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="card-img-top w-100" alt="Large Image 1">
+                    <img src="assets/img/HD-wallpaper-luxurious-interior-bedroom-classic-design-luxury-hotel-room.jpg" class="card-img-top w-100" alt="Large Image 1">
                     <div class="card-body">
-                        <h3 class="card-title mt-2">Deskripsi tentang gambar 1.</h3>
-                        <p class="card-text mt-2">Deskripsi tentang gambar 1.</p>
+                        <h3 class="card-title mt-2">SUPERIOR ROOM</h3>
+                        <p class="card-text mt-2">Fasilitas yang didapatkan :</p>
 
                         <ul class="list-unstyled">
-                            <li>Barang 1</li>
-                            <li>Barang 2</li>
-                            <li>Barang 3</li>
+                            <li>Semua fasilitas standard</li>
+                            <li>Ruang tidur yang lebih luas</li>
+                            <li>Kasur yang lebih nyaman</li>
+
+                            <li>Minibar</li>
+                            <li>Kulkas</li>
+                            <li>Mesin pembuat kopi atau teh</li>
+                            <li>Wi-Fi gratis</li>
+
+
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="card-img-top w-100" alt="Large Image 1">
+                    <img src="assets/img/Hotel-7-double-bedroom-1000x500_c.jpg" class="card-img-top w-100" alt="Large Image 1">
                     <div class="card-body">
-                        <h3 class="card-title mt-2">Deskripsi tentang gambar 1.</h3>
-                        <p class="card-text mt-2">Deskripsi tentang gambar 1.</p>
+                        <h3 class="card-title mt-2">STANDARD ROOM</h3>
+                        <p class="card-text mt-2">Fasilitas yang didapatkan :</p>
                         <ul class="list-unstyled">
-                            <li>Barang 1</li>
-                            <li>Barang 2</li>
-                            <li>Barang 3</li>
+                            <li>Tempat tidur double</li>
+                            <li>Lemari pakaian</li>
+                            <li>Meja dan kursi</li>
+                            <li>TV kabel</li>
+                            <li>Air conditioner</li>
+                            <li>Kamar mandi dengan shower</li>
                         </ul>
                     </div>
                 </div>
@@ -111,28 +123,42 @@
         <div class="row mt-4">
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="card-img-top w-100" alt="Large Image 1">
+                    <img src="assets/img/desktop-wallpaper-hotel-room-and-hotel-room.jpg" class="card-img-top w-100" alt="Large Image 1">
                     <div class="card-body">
-                        <h3 class="card-title mt-2">Deskripsi tentang gambar 1.</h3>
-                        <p class="card-text mt-2">Deskripsi tentang gambar 1.</p>
+                        <h3 class="card-title mt-2">SUITE ROOM</h3>
+                        <p class="card-text mt-2">Fasilitas yang didapatkan :</p>
                         <ul class="list-unstyled">
-                            <li>Barang 1</li>
-                            <li>Barang 2</li>
-                            <li>Barang 3</li>
+                            <li>Semua fasilitas deluxe</li>
+                            <li>Ruang tamu</li>
+                            <li>Kamar mandi tambahan</li>
+                            <li>Balkon atau teras</li>
+                            <li>Jacuzzi</li>
+                            <li>Fasilitas rapat atau konferensi</li>
+                            <li>Layanan butler</li>
+                            <li>Layanan kamar 24 jam</li>
                         </ul>
                     </div>
                 </div>
             </div>
             <div class="col-md-6">
                 <div class="card mb-4">
-                    <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="card-img-top w-100" alt="Large Image 1">
+                    <img src="assets/img/Deluxe-Pool-View-Twin-Room-new (1).jpg" class="card-img-top w-100" alt="Large Image 1">
                     <div class="card-body">
-                        <h3 class="card-title mt-2">Deskripsi tentang gambar 1.</h3>
-                        <p class="card-text mt-2">Deskripsi tentang gambar 1.</p>
+                        <h3 class="card-title mt-2">DELUXE ROOM</h3>
+                        <p class="card-text mt-2">Fasilitas yang didapatkan :</p>
                         <ul class="list-unstyled">
-                            <li>Barang 1</li>
-                            <li>Barang 2</li>
-                            <li>Barang 3</li>
+                            <li>Tempat tidur queen size atau king size</li>
+                            <li>Lemari pakaian</li>
+                            <li>Meja dan kursi</li>
+                            <li>TV kabel</li>
+                            <li>Air conditioner</li>
+                            <li>Kamar mandi dengan shower atau bathtub</li>
+                            <li>Minibar</li>
+                            <li>Kulkas</li>
+                            <li>Mesin pembuat kopi atau teh</li>
+                            <li>Rak pengering pakaian</li>
+                            <li>Setrika dan papan setrika</li>
+                            <li>Wi-Fi gratis</li>
                         </ul>
                     </div>
                 </div>
@@ -141,6 +167,9 @@
 
 
         <script src="assets/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js"></script>
+        <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
 </body>
 
 </html>

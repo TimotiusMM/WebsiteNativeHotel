@@ -88,17 +88,15 @@
         <div id="carouselExampleCaptions" class="carousel slide" data-ride="carousel">
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img src="assets/img/suite-room.jpeg" class="d-block w-100" alt="Image 1" style="object-fit: cover;">
+                    <img src="assets/img/1.jpg" class="d-block w-100" alt="Image 1" style="object-fit: cover;">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/Superior-kffing.jpg" class="d-block w-100" alt="Image 2" style="object-fit: cover;">
+                    <img src="assets/img/2.jpg" class="d-block w-100" alt="Image 2" style="object-fit: cover;">
                 </div>
                 <div class="carousel-item">
-                    <img src="assets/img/deluxe-roomsss.jpeg" class="d-block w-100" alt="Image 3" style="object-fit: cover;">
+                    <img src="assets/img/3.jpg" class="d-block w-100" alt="Image 3" style="object-fit: cover;">
                 </div>
-                <div class="carousel-item">
-                    <img src="assets/img/Amorgos-Standard-Room1-e1464286427430 (1).jpg" class="d-block w-100" alt="Image 4" style="object-fit: cover;">
-                </div>
+
             </div>
             <a class="carousel-control-prev" href="#carouselExampleCaptions" role="button" data-slide="prev">
                 <span class="carousel-control-prev-icon" aria-hidden="true"></span>
@@ -138,6 +136,7 @@
                                 <option value="standard">Standard Room</option>
                                 <option value="deluxe">Deluxe Room</option>
                                 <option value="suite">Suite Room</option>
+                                <option value="suite">Superior Room</option>
                             </select>
                         </div>
                         <div class="col-md-3">

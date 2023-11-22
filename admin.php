@@ -79,20 +79,20 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <div class="container-fluid">
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark sticky-top">
             <div class="container">
-                <a class="navbar-brand" href="tamu.php">HOTELLIN</a>
+                <a class="navbar-brand" href="admin.php">HOTELLIN</a>
                 <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
                     <span class="navbar-toggler-icon"></span>
                 </button>
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="admin" href="admin.php">Room</a>
+                            <a class="nav-link" aria-current="admin" href="admin.php">Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="fKamar.php">Room Facilities</a>
+                            <a class="nav-link active" href="fKamar.php">Fasilitas Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="fHotel.php">Hotel Facilities</a>
+                            <a class="nav-link active" href="fHotel.php">Fasilitas Hotel</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
 
-            <h2 class="mt-4">Room List</h2>
+            <h2 class="mt-4">Data Kamar</h2>
             <button class="btn btn-primary mt-2 mb-4" onclick="showRoomForm()">input</button>
 
             <div class="col-md-12">

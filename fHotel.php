@@ -5,60 +5,29 @@ include 'koneksi.php'; // Include the database connection file
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Validate inputs
     if (empty($_POST['roomFasilitas']) || empty($_POST['roomKeterangan'])) {
-        echo '<script>alert("Silakan isi semua kolom.");</script>';
+        echo '<script>alert("Please fill in all fields.");</script>';
     } else {
         // Escape user inputs for security
         $roomFasilitas = mysqli_real_escape_string($koneksi, $_POST['roomFasilitas']);
         $roomKeterangan = mysqli_real_escape_string($koneksi, $_POST['roomKeterangan']);
 
-        // File upload handling
-        $targetDir = "C:/xampp1/htdocs/webHotel/assets/img/";
-        $uploadOk = 1;
-        $imageFileType = strtolower(pathinfo($_FILES["gambar"]["name"], PATHINFO_EXTENSION));
+        // Insert data into the database
+        $sql = "INSERT INTO fhotel (fasilitas, keterangan) VALUES ('$roomFasilitas', '$roomKeterangan')";
 
-        // Setel nama file unik dengan menggunakan uniqid() dan tambahkan ekstensi file
-        $targetFile = $targetDir . uniqid() . '.' . $imageFileType;
+        if ($koneksi->query($sql) === TRUE) {
+            // Set success message in session
+            session_start();
+            $_SESSION['success_message'] = "Data Berhasil Disimpan";
 
-        // Check if file size is too large
-        if ($_FILES["gambar"]["size"] > 500000) {
-            echo '<script>alert("Sorry, your file is too large.");</script>';
-            $uploadOk = 0;
-        }
-
-        // Allow certain file formats
-        $allowedExtensions = array("jpg", "jpeg", "png", "gif");
-        if (!in_array($imageFileType, $allowedExtensions)) {
-            echo '<script>alert("Sorry, only JPG, JPEG, PNG & GIF files are allowed.");</script>';
-            $uploadOk = 0;
-        }
-
-        // Check if $uploadOk is set to 0 by an error
-        if ($uploadOk == 0) {
-            echo '<script>alert("Sorry, your file was not uploaded.");</script>';
+            // Redirect to the same page to avoid form resubmission
+            header('Location: ' . $_SERVER['PHP_SELF']);
+            exit();
         } else {
-            if (move_uploaded_file($_FILES["gambar"]["tmp_name"], $targetFile)) {
-                // Insert data into the database
-                $sql = "INSERT INTO fhotel (fasilitas, keterangan, gambar) VALUES ('$roomFasilitas', '$roomKeterangan', '$targetFile')";
-
-                if ($koneksi->query($sql) === TRUE) {
-                    // Set success message in session
-                    session_start();
-                    $_SESSION['success_message'] = "Data Berhasil Disimpan";
-
-                    // Redirect to the same page to avoid form resubmission
-                    header('Location: ' . $_SERVER['PHP_SELF']);
-                    exit();
-                } else {
-                    echo '<script>alert("Error: ' . $sql . '<br>' . $koneksi->error . '");</script>';
-                }
-            } else {
-                echo '<script>alert("Sorry, there was an error uploading your file.");</script>';
-            }
+            echo '<script>alert("Error: ' . $sql . '<br>' . $koneksi->error . '");</script>';
         }
     }
 }
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -117,13 +86,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <div class="collapse navbar-collapse" id="navbarSupportedContent">
                     <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                         <li class="nav-item">
-                            <a class="nav-link active" href="admin.php">Room</a>
+                            <a class="nav-link active" href="admin.php">Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link active" href="fKamar.php">Room Facilities</a>
+                            <a class="nav-link active" href="fKamar.php">Fasilitas Kamar</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" aria-current="fHotel" href="fHotel.php">Hotel Facilities</a>
+                            <a class="nav-link" aria-current="fHotel" href="fHotel.php">Fasilitas Hotel</a>
                         </li>
                     </ul>
                     <ul class="navbar-nav">
@@ -145,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             ?>
 
-            <h2 class="mt-4">Room Facilities List</h2>
+            <h2 class="mt-4">Data Fasilitas Hotel</h2>
             <button class="btn btn-primary mt-2 mb-4" onclick="showRoomForm()">input</button>
 
             <div class="col-md-12">
@@ -154,8 +123,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                         <tr>
                             <th>No</th>
                             <th>Fasilitas</th>
-                            <th>keterangan</th>
-                            <th>Gambar</th>
+                            <th>Keterangan</th>
                             <th>Aksi</th>
                         </tr>
                     </thead>
@@ -170,21 +138,17 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                 $counter = 1;
                                 while ($row = $result->fetch_assoc()) {
                                     echo '<tr>
-        <td>' . $counter++ . '</td>
-        <td>' . $row['fasilitas'] . '</td>
-        <td>' . $row['keterangan'] . '</td>
-        <td>
-        <img src="' . $row['gambar'] . '" alt="Room Image" style="max-width: 100px; max-height: 100px;">
-        </td>
-
-        <td>
-            <a href="editFhotel.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
-            <button class="btn btn-danger" onclick="prepareDelete(' . $row['no'] . ')">Delete</button>
-        </td>
-    </tr>';
+    <td>' . $counter++ . '</td>
+    <td>' . $row['fasilitas'] . '</td>
+    <td>' . $row['keterangan'] . '</td>
+    <td>
+        <a href="editFhotel.php?no=' . $row['no'] . '" class="btn btn-warning">Edit</a>
+        <button class="btn btn-danger" onclick="prepareDelete(' . $row['no'] . ')">Delete</button>
+    </td>
+</tr>';
                                 }
                             } else {
-                                echo '<tr><td colspan="5">No records found</td></tr>';
+                                echo '<tr><td colspan="4">No records found</td></tr>';
                             }
                         }
                         ?>
@@ -213,12 +177,12 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             </div>
         </div>
         <!-- Formulir untuk menambahkan data kamar (sembunyikan awalnya) -->
-        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>" enctype="multipart/form-data">
+        <form method="post" action="<?php echo $_SERVER['PHP_SELF']; ?>">
             <div class="container">
                 <div id="roomForm" style="display: none;" class="mt-3">
                     <div class="card mt-3 mb-4">
                         <div class="card-body">
-                            <h2 class="card-title mt-2">Add Room</h2>
+                            <h2 class="card-title mt-2">Add Fasilitas </h2>
                             <div class="row g-3 mt-2">
                                 <div class="col-md-6">
                                     <div class="mb-3">
@@ -232,17 +196,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                                         <input type="text" class="form-control" name="roomKeterangan" id="roomKeterangan" required>
                                     </div>
                                 </div>
-                                <!-- Correct the name attribute to "gambar" -->
-                                <div class="col-md-6">
-                                    <div class="mb-3">
-                                        <label for="gambar" class="form-label">Room Image</label>
-                                        <input type="file" class="form-control" name="gambar" id="gambar">
-                                    </div>
-                                </div>
 
                                 <button type="submit" class="btn btn-primary" aria-label="Submit Form">Submit</button>
                             </div>
-
                         </div>
                     </div>
                 </div>
